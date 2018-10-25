@@ -1,3 +1,10 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
 
 #include <iostream>
 #include <vector>
@@ -46,11 +53,12 @@ bool compTransaction(Transaction left, Transaction right)
 }
 void Block::printBlockTrans()
 {
+    cout<<"Transactions in the block : "<<endl;
     printTransactions(tr);
 }
 double Block::CreateBlock(vector<Transaction> v)
 {
-    long maxSize = 500000;
+    long maxSize = 1000000;
     long blksize=0;
     double maxReward = 12.5;
     Transaction tmptr;
@@ -137,6 +145,7 @@ int main()
     sort(trans.begin(),trans.end(),compTransaction);
     
     //print transactions
+    cout<<"Available transactions:"<<endl;
     printTransactions(trans);
     
     //create a block
@@ -145,11 +154,14 @@ int main()
     
     //returns the maximum award earned
     double maxReward = blk->CreateBlock(trans);    
+    
+    cout<<"\nBlock Created :"<<endl;
     cout<<"Maximum Reward : "<<maxReward<<endl;
     
     //print transactions in a block
     blk->printBlockTrans();
-  
+   /* for(it=blk->tr.begin();it!=blk->tr.end();it++)
+        cout<<it->id<<"\t"<<it->sizebytes<<"\t\t"<<it->fee<<endl;*/
         
    delete(blk);
     
